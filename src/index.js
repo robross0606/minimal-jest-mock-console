@@ -1,5 +1,7 @@
 'use strict';
 
+const Util = require('node:util'); 
+
 class MockConsole {
     constructor(level = 'error', regexList = [/.*/u]) {
         this.originalConsole = { ...console };
@@ -10,7 +12,7 @@ class MockConsole {
             let match = false;
             let duplicate = false;
 
-            msg = msg.replace(/%s/g, () => args.splice(0, 1));
+            msg = util.format(msg, ...args);
 
             for (const regex of regexList) {
                 if (regex.test(msg)) {
