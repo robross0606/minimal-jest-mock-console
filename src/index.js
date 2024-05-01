@@ -12,7 +12,7 @@ class MockConsole {
             let match = false;
             let duplicate = false;
 
-            msg = util.format(msg, ...args);
+            msg = Util.format(msg, ...args);
 
             for (const regex of regexList) {
                 if (regex.test(msg)) {
